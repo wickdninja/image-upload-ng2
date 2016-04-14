@@ -1,0 +1,19 @@
+{
+  "name": "com.alliedpayment.logsearch",
+  "version": "1.0.0",
+  "description": "Allied Payment Elastic Search Tool",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wickdninja/com.alliedpayment.logsearch.git"
+  },
+  "author": "nate.ross@alliedpayment.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wickdninja/com.alliedpayment.logsearch/issues"
+  },
+  "homepage": "https://github.com/wickdninja/com.alliedpayment.logsearch#readme"
+}
