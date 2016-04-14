@@ -1,3 +1,5 @@
+
+
 'use strict';
 
 var spawn = require('child_process').spawn;
@@ -15,7 +17,42 @@ var srcDir = projectDir.cwd('./app');
 var destDir = projectDir.cwd('./build');
 var rimraf = require('gulp-rimraf');
 
+// -------------------------------------
+// Tasks
+// -------------------------------------
 
+gulp.task('clean', function (callback) {
+   destDir.dirAsync('.', { empty: true });
+    return gulp.src('*.zip', { read: false }) // much faster 
+   .pipe(rimraf());
+});
+
+gulp.task('copy', ['clean'], function () {
+    return projectDir.copyAsync('app', destDir.path(), {
+        overwrite: true,
+        matching: [
+            './node_modules/**/*',
+            '*.html',
+            '*.css',
+            '*.svg',
+            'main.js',
+            'package.json'
+        ]
+    });
+});
+
+gulp.task('build', ['copy'], function () {
+    return gulp.src('./app/index.html')
+        .pipe(usemin({
+            js: [uglify()]
+        }))
+        .pipe(gulp.dest('build/'));
+});
+
+//todo figure out why wrapping this child_process in a gulp task causes spawn to throw  TypeError: Bad argument
+gulp.task('run', function () {
+    spawn(electron, ['./app'], { stdio: 'inherit' });
+});
 
 gulp.task('build-osx', ['build'], function () {
     return gulp.src('build/**')
