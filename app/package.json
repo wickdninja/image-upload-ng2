@@ -1,0 +1,8 @@
+{
+  "name": "com.alliedpayment.logsearch.app",
+  "version": "1.0.0",
+  "description": "Angular 2 app",
+  "main": "main.js",
+  "author": "",
+  "license": "ISC"
+}
